@@ -1,0 +1,25 @@
+.head {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;  
+  font-family: 'Montserrat';
+
+  @media screen and (min-width: 768px) {
+    padding-top: 40px;
+  }
+}
+
+.head__title {
+  font-weight: 700;
+  font-size: 20px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 26px;
+  }
+}
+
+.head__subtitle {
+  font-size: 14px;
+  font-weight: 600;
+}

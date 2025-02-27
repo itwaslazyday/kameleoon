@@ -1,0 +1,60 @@
+.sort {
+  display: grid;
+  grid-template-columns: 20% 10% 10% auto auto;
+  gap: 20px;
+  align-items: center;
+  position: relative;
+  color: var(--color-grey);
+  padding: 10px 0;
+
+  font-family: 'Roboto';
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0.5px;
+
+  @media screen and (min-width: 768px) {
+    padding: 10px 12px;
+    grid-template-columns: 40% 10% 10% auto auto;
+  }
+}
+
+.sort__button {
+  color: inherit;
+  text-transform: uppercase;
+  background-color: transparent;
+  display: flex;
+  align-items: baseline;
+  column-gap: 10px;
+  transition: var(--transition);
+  width: fit-content;
+  border-radius: 1px;
+
+  &._active {
+    svg {
+      opacity: 1;
+      visibility: visible;
+      transform: rotate(90deg);
+    }
+  }
+
+  &:hover {
+    svg {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--color-grey);
+    outline-offset: 6px;
+  }
+}
+
+.sort__icon {
+  transition: var(--transition);
+  transform: rotate(-90deg);
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  visibility: hidden;
+}
