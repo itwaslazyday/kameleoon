@@ -23,6 +23,6 @@ type State = {
   sortType: SortTypes | "DEFAULT";
 };
 
-type Action = { type: "SET_TESTS"; payload: Test[] } | { type: "SET_SITES"; payload: Site[] } | { type: "SET_SORT"; payload: any };
+type Action = { type: "SET_TESTS"; payload: Test[] } | { type: "SET_SITES"; payload: Site[] } | { type: "SET_SORT"; payload: SortTypes | "DEFAULT" } | { type: "SET_ERROR"; payload: Error };
 
 export type { Site, Test, State, Action };

@@ -1,5 +1,6 @@
 enum AppRoute {
-  Test = "/test/:id",
+  Finalize = "/finalize/:id",
+  Results = "/results/:id",
   Main = "/",
   NotFound = "*",
 }
@@ -24,4 +25,9 @@ enum SortTypes {
   SITE = "SITE",
 }
 
-export { AppRoute, Type, Status, SortTypes };
+enum ProcessTypes {
+  Finalize = "Finalize",
+  Results = "Results",
+}
+
+export { AppRoute, Type, Status, SortTypes, ProcessTypes };

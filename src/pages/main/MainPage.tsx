@@ -2,7 +2,7 @@ import { JSX, useContext, useState, useEffect, useRef } from 'react';
 import Search from 'components/blocks/Search/Search';
 import Tasks from 'components/blocks/Tasks/Tasks';
 import Head from 'components/blocks/Head/Head';
-import { Context } from 'components/blocks/app/App';
+import { Context } from "hooks/useStore";
 import Loader from 'components/ui/Loader/Loader';
 import Stub from 'components/blocks/Stub/Stub';
 import { SortTypes, Status } from 'const';
@@ -25,7 +25,7 @@ const sortCallback = (id: string, data: Test[]) => {
 }
 
 export default function MainPage(): JSX.Element {
-  const {loading, sortType, tests} = useContext(Context);
+  const {loading, sortType, error, tests} = useContext(Context);
   const [filtered, setFiltered] = useState(tests);
   const [isSearchReset, resetSearch] = useState(false);
   const ref = useRef<{ tests: Test[]}>({ tests });
@@ -55,6 +55,14 @@ export default function MainPage(): JSX.Element {
     resetSearch((prev) => !prev);
   }
 
+  if (error) {
+    return (<p>{error.message}</p>);
+  } else if (loading) {
+    return (
+      <Loader />
+    );
+  }
+
   return (
     <main className='main'>
       <Head title='Dashboard'/>
@@ -63,11 +71,9 @@ export default function MainPage(): JSX.Element {
         resultLength={filtered.length}
         isSearchReset={isSearchReset}
       />
+      <Tasks tasks={filtered}/>
       {
-        loading ? <Loader/> : <Tasks tasks={filtered}/>
-      }
-      {
-        !loading && !filtered.length && <Stub onClick={handleReset}/>
+        !filtered.length && <Stub onClick={handleReset}/>
       }
     </main>
   );
